@@ -1,35 +1,30 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LocaleProvider } from './contexts/LocaleContext';
-import SiteLayout from './components/SiteLayout';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import RoomsPage from './pages/RoomsPage';
-import ExperiencesPage from './pages/ExperiencesPage';
-import GalleryPage from './pages/GalleryPage';
-import BookingPage from './pages/BookingPage';
-import ContactPage from './pages/ContactPage';
-import NotFoundPage from './pages/NotFoundPage';
-import './styles/index.css';
+const root = document.getElementById('root');
+if (!root) throw new Error('App root was not found');
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <LocaleProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<SiteLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="rooms" element={<RoomsPage />} />
-            <Route path="experiences" element={<ExperiencesPage />} />
-            <Route path="gallery" element={<GalleryPage />} />
-            <Route path="booking" element={<BookingPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </LocaleProvider>
-  </StrictMode>
-);
+root.innerHTML = `
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+:root{font-family:Manrope,Arial,sans-serif;color:#24352d;background:#f8f6f0;font-synthesis:none;scroll-behavior:smooth}*{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}button,input{font:inherit}.topbar{height:86px;padding:0 7vw;display:flex;align-items:center;justify-content:space-between;background:#f8f6f0;position:relative;z-index:2}.brand{display:flex;align-items:center;gap:12px;letter-spacing:.19em;font-size:12px;font-weight:700}.monogram{font-family:'Cormorant Garamond',serif;font-size:28px;border:1px solid #b09a70;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;color:#997d4c}.nav{display:flex;align-items:center;gap:32px;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.nav a:hover{color:#9c8052}.nav .book{background:#293b32;color:white;padding:15px 21px}.menu{display:none;border:0;background:none;color:#293b32;font-size:13px;letter-spacing:.13em;text-transform:uppercase}.hero{min-height:680px;padding:95px 9vw;display:flex;align-items:center;color:white;background:linear-gradient(90deg,rgba(22,35,29,.72),rgba(22,35,29,.08)),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85') center 55%/cover}.hero-copy{max-width:640px}.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase}.hero h1{font:400 clamp(64px,9vw,116px)/.92 'Cormorant Garamond',serif;margin:25px 0}.hero p{font-size:14px;line-height:1.9;max-width:440px;color:#f1eee7}.outline{display:inline-block;margin-top:20px;padding:17px 23px;border:1px solid rgba(255,255,255,.75);font-size:11px;letter-spacing:.16em;text-transform:uppercase}.section{padding:105px 9vw}.intro{text-align:center;max-width:850px;margin:auto}.intro h2,.section-title{font:400 clamp(42px,6vw,70px)/1.05 'Cormorant Garamond',serif;margin:20px 0}.muted{color:#738077;font-size:12px;letter-spacing:.2em;text-transform:uppercase}.intro p,.story p{line-height:2;color:#67736b;font-size:14px}.stay{margin:-25px auto 0;position:relative;max-width:1030px;background:white;box-shadow:0 18px 55px #182a201c;padding:27px;display:grid;grid-template-columns:repeat(3,1fr) auto;gap:14px;align-items:end}.stay label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#738077}.stay input{display:block;border:0;border-bottom:1px solid #d9ded7;padding:12px 0;width:100%;color:#293b32;background:white}.stay button,.solid{border:0;background:#293b32;color:white;padding:16px 24px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer}.note{text-align:center;font-size:12px;color:#738077;min-height:20px;margin-top:18px}.rooms{background:#eeece4}.heading-row{display:flex;justify-content:space-between;align-items:end;margin-bottom:38px}.heading-row p{max-width:300px;font-size:13px;line-height:1.8;color:#718078}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card img{width:100%;height:310px;object-fit:cover;display:block}.card h3{font:400 29px 'Cormorant Garamond',serif;margin:18px 0 7px}.card p{color:#718078;font-size:12px;line-height:1.8}.story{display:grid;grid-template-columns:1fr 1fr;gap:9vw;align-items:center}.story img{width:100%;height:520px;object-fit:cover}.story h2{font:400 clamp(46px,6vw,76px)/.98 'Cormorant Garamond',serif;margin:20px 0}.experiences{text-align:center;background:#293b32;color:#f8f6f0}.experiences .muted{color:#c9b58e}.experiences .section-title{margin-bottom:55px}.experience-list{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;text-align:left}.experience-list div{border-top:1px solid #66766d;padding-top:18px}.experience-list b{font:400 26px 'Cormorant Garamond',serif}.experience-list p{font-size:12px;line-height:1.8;color:#c5ccc6}.footer{padding:55px 9vw;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.1em;color:#718078}.footer strong{color:#293b32;letter-spacing:.2em}.footer a{text-decoration:underline}.toast{font-size:12px;color:#526859}
+@media(max-width:760px){.topbar{height:72px;padding:0 6vw}.menu{display:block}.nav{display:none;position:absolute;top:72px;left:0;right:0;background:#f8f6f0;padding:24px 6vw;flex-direction:column;align-items:stretch;gap:22px}.nav.open{display:flex}.nav .book{text-align:center}.hero{min-height:600px;padding:70px 7vw;background-position:58% center}.section{padding:75px 7vw}.stay{margin:-12px 7vw 0;grid-template-columns:1fr 1fr}.stay button{grid-column:1/-1}.cards{grid-template-columns:1fr}.card img{height:300px}.heading-row{display:block}.story{grid-template-columns:1fr;gap:35px}.story img{height:380px}.experience-list{grid-template-columns:1fr 1fr}.footer{padding:38px 7vw;display:block;line-height:2.2}}
+</style>
+<header class="topbar"><a class="brand" href="#home"><span class="monogram">H</span><span>HAMADA ZH<br><small style="font-size:9px;font-weight:400;letter-spacing:.23em">MARRAKECH · MEDINA</small></span></a><button class="menu" id="menu" aria-expanded="false">Menu</button><nav class="nav" id="nav"><a href="#rooms">The Riad</a><a href="#story">Our Story</a><a href="#experiences">Experiences</a><a class="book" href="#enquiry">Enquire</a></nav></header>
+<main id="home"><section class="hero"><div class="hero-copy"><div class="eyebrow">A boutique riad concept · Marrakech</div><h1>A slower kind<br>of somewhere.</h1><p>Behind the medina’s ochre walls, find a little stillness, thoughtful design and the warmth of Moroccan hospitality.</p><a class="outline" href="#rooms">Discover the riad&nbsp; ↗</a></div></section>
+<section class="section"><div class="intro"><div class="muted">Welcome to Hamada ZH</div><h2>Find your own rhythm<br>in the heart of the medina.</h2><p>A quiet courtyard, rooms shaped by craft and light, and the old city just beyond the door. An invitation to settle in and see Marrakech at your own pace.</p></div></section>
+<form class="stay" id="enquiry"><label>Arrival<input aria-label="Arrival date" type="date" required></label><label>Departure<input aria-label="Departure date" type="date" required></label><label>Guests<select aria-label="Guests" style="display:block;border:0;border-bottom:1px solid #d9ded7;padding:12px 0;width:100%;background:white;color:#293b32"><option>2 guests</option><option>1 guest</option><option>3 guests</option><option>4 guests</option></select></label><button type="submit">Prepare enquiry</button></form><div class="note" id="note" role="status">Enquiries are a preview only; no reservation is created.</div>
+<section class="section rooms" id="rooms"><div class="heading-row"><div><div class="muted">Rest & restore</div><h2 class="section-title">Rooms with a sense of calm.</h2></div><p>Natural textures, considered details and the soft hush of the courtyard.</p></div><div class="cards"><article class="card"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=80" alt="Sunlit riad guest room"><h3>The Courtyard Room</h3><p>Warm plaster, woven textures and a view into the heart of the house.</p></article><article class="card"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Quiet bedroom with handcrafted details"><h3>The Terrace Suite</h3><p>A generous hideaway with layered linens and room to unwind.</p></article><article class="card"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80" alt="Moroccan interior with soft natural light"><h3>The Garden Suite</h3><p>Soft morning light and a palette inspired by the surrounding earth.</p></article></div></section>
+<section class="section story" id="story"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85" alt="Calm, sunlit courtyard interior"><div><div class="muted">Rooted in place</div><h2>Made for the pauses between.</h2><p>Hamada ZH is imagined as a small sanctuary woven into the rhythm of the old city. A place for long breakfasts, unhurried afternoons and evenings beneath the open sky.</p><p>Every detail takes its cue from the medina: its craft, its colors and its generous way of welcoming a guest.</p></div></section>
+<section class="section experiences" id="experiences"><div class="muted">A little closer to Marrakech</div><h2 class="section-title">The city, at your own pace.</h2><div class="experience-list"><div><b>01 · The souks</b><p>Wander the lanes and discover makers, spices and hidden courtyards.</p></div><div><b>02 · Slow mornings</b><p>Begin with mint tea and a breakfast inspired by the season.</p></div><div><b>03 · The rooftops</b><p>Watch the late light settle over the medina’s terracotta rooftops.</p></div><div><b>04 · Local craft</b><p>Meet the materials and traditions that give this city its character.</p></div></div></section></main>
+<footer class="footer"><strong>HAMADA ZH · MARRAKECH</strong><span>Concept website · details and services are illustrative.</span><a href="#home">Back to top ↑</a></footer>
+`;
+
+document.getElementById('menu')?.addEventListener('click', () => {
+  const nav = document.getElementById('nav');
+  const open = nav?.classList.toggle('open') ?? false;
+  document.getElementById('menu')?.setAttribute('aria-expanded', String(open));
+});
+document.querySelectorAll<HTMLAnchorElement>('#nav a').forEach((link) => link.addEventListener('click', () => document.getElementById('nav')?.classList.remove('open')));
+document.getElementById('enquiry')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const note = document.getElementById('note');
+  if (note) note.textContent = 'Your enquiry preview is ready. This concept does not check availability or create a reservation.';
+});
